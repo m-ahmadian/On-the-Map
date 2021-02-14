@@ -155,7 +155,7 @@
         <!--On the Map-->
         <scene sceneID="wt2-7g-AGx">
             <objects>
-                <viewController id="Pkf-3l-QwO" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Pkf-3l-QwO" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PmG-O2-bHy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="HTz-AC-0dp">
                                 <connections>
-                                    <segue destination="o1V-S3-Zdm" kind="push" id="qEq-Iw-rSC"/>
+                                    <segue destination="o1V-S3-Zdm" kind="show" id="qEq-Iw-rSC"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="Ouu-Oc-oRQ">
@@ -276,7 +276,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="xAn-ZS-zd0">
                                 <connections>
-                                    <segue destination="o1V-S3-Zdm" kind="push" id="FPw-Pk-G2t"/>
+                                    <segue destination="o1V-S3-Zdm" kind="show" id="FPw-Pk-G2t"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="oU7-AC-N9s">
@@ -298,7 +298,7 @@
         <!--Information Posting View Controller-->
         <scene sceneID="BXI-gF-cUt">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="o1V-S3-Zdm" customClass="InformationPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InformationPostingViewController" hidesBottomBarWhenPushed="YES" id="o1V-S3-Zdm" customClass="InformationPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qu2-au-YOA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
                     <connections>
                         <outlet property="linkTextField" destination="ofj-s5-Alx" id="Xl0-YQ-i30"/>
                         <outlet property="locationTextField" destination="W9v-ER-P6C" id="wnl-eE-qJP"/>
-                        <segue destination="Brx-ic-igk" kind="push" identifier="addLocation" id="Xuy-u6-2QA"/>
+                        <segue destination="Brx-ic-igk" kind="show" identifier="addLocation" id="Xuy-u6-2QA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMn-Sx-cb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -416,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPL-94-7lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3665" y="29"/>
+            <point key="canvasLocation" x="3676" y="29"/>
         </scene>
         <!--List-->
         <scene sceneID="V4c-CG-TEa">
@@ -444,6 +444,6 @@
         <image name="logo-u" width="62" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qEq-Iw-rSC"/>
+        <segue reference="FPw-Pk-G2t"/>
     </inferredMetricsTieBreakers>
 </document>

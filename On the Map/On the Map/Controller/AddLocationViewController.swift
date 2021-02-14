@@ -9,7 +9,19 @@
 import UIKit
 import MapKit
 
-class AddLocationViewController: UIViewController {
+protocol AddLocationViewControllerDelegate {
+    func dismissViewController(controller: UIViewController)
+}
+
+class AddLocationViewController: UIViewController, AddLocationViewControllerDelegate {
+    
+    // AddLocationViewController Delegate Method
+    func dismissViewController(controller: UIViewController) {
+        controller.dismiss(animated: true) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
     
     // MARK: - Properties
     var location: String!
@@ -64,6 +76,8 @@ class AddLocationViewController: UIViewController {
         if error == nil {
             
             let annotation = MKPointAnnotation()
+            latitude = coordinate.latitude
+            longitude = coordinate.longitude
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
             annotation.title = "\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)"
             annotation.subtitle = link
@@ -84,6 +98,12 @@ class AddLocationViewController: UIViewController {
             print("Posted Student Location Successfully")
             DispatchQueue.main.async {
                 self.navigationController?.popToRootViewController(animated: true)
+                
+//                self.dismissViewController(controller: self)
+                
+//                self.navigationController?.popViewController(viewController: self, completion: {
+//                    self.dismiss(animated: true, completion: nil)
+//                })
             }
         } else {
             print("Posting Student Location Failed!")
