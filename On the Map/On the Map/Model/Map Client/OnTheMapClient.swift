@@ -85,9 +85,21 @@ class OnTheMapClient {
                     completion(true, nil)
                 }
             } catch {
-                DispatchQueue.main.async {
-                    completion(false, error)
+//                DispatchQueue.main.async {
+//                    completion(false, error)
+//                }
+                
+                do {
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(false, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(false, nil)
+                    }
                 }
+                
             }
             
         }

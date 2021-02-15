@@ -17,6 +17,7 @@
 		E803AC7725C7C84B00F4EC8D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E803AC7625C7C84B00F4EC8D /* Colors.xcassets */; };
 		E80A8B0E25CD023300423D11 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80A8B0D25CD023300423D11 /* InformationPostingViewController.swift */; };
 		E80A8B1025CD11A500423D11 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80A8B0F25CD11A500423D11 /* AddLocationViewController.swift */; };
+		E80CFD2625DA367D004CC1DD /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80CFD2525DA367D004CC1DD /* ErrorResponse.swift */; };
 		E830AFA225C90DD0003B07D6 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830AFA125C90DD0003B07D6 /* LoginRequest.swift */; };
 		E830AFA525C90F92003B07D6 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830AFA425C90F92003B07D6 /* OnTheMapClient.swift */; };
 		E830AFA925C918C2003B07D6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830AFA825C918C2003B07D6 /* LoginResponse.swift */; };
@@ -42,6 +43,7 @@
 		E803AC7625C7C84B00F4EC8D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E80A8B0D25CD023300423D11 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		E80A8B0F25CD11A500423D11 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		E80CFD2525DA367D004CC1DD /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		E830AFA125C90DD0003B07D6 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		E830AFA425C90F92003B07D6 /* OnTheMapClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
 		E830AFA825C918C2003B07D6 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				E803030E25CA6A1A00FE2D23 /* OnTheMapResponse.swift */,
 				E803031025CA6C7B00FE2D23 /* LocationsResponse.swift */,
 				E837174E25CFA13E00045B44 /* UserDataResponse.swift */,
+				E80CFD2525DA367D004CC1DD /* ErrorResponse.swift */,
 			);
 			path = "Map Responses";
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				E830AFA925C918C2003B07D6 /* LoginResponse.swift in Sources */,
 				E837174F25CFA13E00045B44 /* UserDataResponse.swift in Sources */,
 				E803030F25CA6A1A00FE2D23 /* OnTheMapResponse.swift in Sources */,
+				E80CFD2625DA367D004CC1DD /* ErrorResponse.swift in Sources */,
 				E803AC7425C7C1A500F4EC8D /* LoginTextField.swift in Sources */,
 				E8B803AC25D9009E00A2ADB8 /* UINavigationController+Extension.swift in Sources */,
 			);
