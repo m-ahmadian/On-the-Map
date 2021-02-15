@@ -9,11 +9,7 @@
 import UIKit
 import MapKit
 
-protocol AddLocationViewControllerDelegate {
-    func dismissViewController(controller: UIViewController)
-}
-
-class AddLocationViewController: UIViewController, AddLocationViewControllerDelegate {
+class AddLocationViewController: UIViewController {
     
     // AddLocationViewController Delegate Method
     func dismissViewController(controller: UIViewController) {
