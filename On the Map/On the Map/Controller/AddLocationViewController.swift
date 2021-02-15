@@ -26,8 +26,7 @@ class AddLocationViewController: UIViewController, AddLocationViewControllerDele
     // MARK: - Properties
     var location: String!
     var link: String!
-    lazy var latitude: Double = 0
-    lazy var longitude: Double = 0
+    var coordinate: CLLocationCoordinate2D!
     
     
     // MARK: - Outlets
@@ -37,63 +36,37 @@ class AddLocationViewController: UIViewController, AddLocationViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getCoordinate(addressString: location, completionHandler: handleGetCoordinate(coordinate:error:))
+        setUpMapView(coordinate: coordinate)
     }
     
     
     // MARK: - Actions
     @IBAction func finish(_ sender: Any) {
-        OnTheMapClient.postStudentLocation(mapString: location, mediaURL: link, latitude: latitude, longitude: longitude, completion: handlePostLocation(success:error:))
-        
+        OnTheMapClient.postStudentLocation(mapString: location, mediaURL: link, latitude: coordinate.latitude, longitude: coordinate.longitude, completion: handlePostLocation(success:error:))
     }
     
     
     
     // MARK: - Helper Methods
     
-    func getCoordinate(addressString : String,
-                       completionHandler: @escaping (CLLocationCoordinate2D, Error?) -> Void ) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
-            if error == nil {
-                if let placemark = placemarks?[0] {
-                    let location = placemark.location!
-                    
-                    DispatchQueue.main.async {
-                        completionHandler(location.coordinate, nil)
-                    }
-                    return
-                }
-            }
-            
-            DispatchQueue.main.async {
-                completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
-            }
-        }
+    func setUpMapView(coordinate: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)"
+        annotation.subtitle = link
+        
+        //            let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
+        //            let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+        
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.addAnnotation(annotation)
+        self.mapView.reloadInputViews()
     }
     
-    func handleGetCoordinate(coordinate: CLLocationCoordinate2D, error: Error?) {
-        if error == nil {
-            
-            let annotation = MKPointAnnotation()
-            latitude = coordinate.latitude
-            longitude = coordinate.longitude
-            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            annotation.title = "\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)"
-            annotation.subtitle = link
-            
-//            let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
-//            let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
-            
-            self.mapView.setRegion(region, animated: true)
-            self.mapView.addAnnotation(annotation)
-            self.mapView.reloadInputViews()
-        }
-    }
+    
     
     func handlePostLocation(success: Bool, error: Error?) {
-        
         if success {
             print("Posted Student Location Successfully")
             DispatchQueue.main.async {

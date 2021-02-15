@@ -15,6 +15,10 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     
+    
+    // MARK: - Properties
+    lazy var coordinate = CLLocationCoordinate2D()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ class InformationPostingViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func findLocation(_ sender: Any) {
-        performSegue(withIdentifier: "addLocation", sender: self)
+        getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
     }
     
     
@@ -46,6 +50,7 @@ class InformationPostingViewController: UIViewController {
         if segue.identifier == "addLocation" {
             let addLocationVC = segue.destination as? AddLocationViewController
             addLocationVC?.location = self.locationTextField.text ?? ""
+            addLocationVC?.coordinate = self.coordinate
             addLocationVC?.link = self.linkTextField.text ?? ""
         }
         
@@ -54,6 +59,38 @@ class InformationPostingViewController: UIViewController {
     
     func handleUserData(success: Bool, error: Error?) {
         print("\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)")
+    }
+    
+    
+    
+    func getCoordinate(addressString : String,
+                       completionHandler: @escaping (CLLocationCoordinate2D, Error?) -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                
+                    DispatchQueue.main.async {
+                        completionHandler(location.coordinate, nil)
+                    }
+                    return
+                }
+            }
+            
+            DispatchQueue.main.async {
+                completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+            }
+        }
+    }
+    
+    
+    func handleGetCoordinate(coordinate: CLLocationCoordinate2D, error: Error?) {
+        if error == nil {
+            self.coordinate = coordinate
+            performSegue(withIdentifier: "addLocation", sender: self)
+
+        }
     }
 
 }
