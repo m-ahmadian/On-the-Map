@@ -70,13 +70,7 @@ class AddLocationViewController: UIViewController, AddLocationViewControllerDele
         if success {
             print("Posted Student Location Successfully")
             DispatchQueue.main.async {
-                self.navigationController?.popToRootViewController(animated: true)
-                
-//                self.dismissViewController(controller: self)
-                
-//                self.navigationController?.popViewController(viewController: self, completion: {
-//                    self.dismiss(animated: true, completion: nil)
-//                })
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         } else {
             print("Posting Student Location Failed!")

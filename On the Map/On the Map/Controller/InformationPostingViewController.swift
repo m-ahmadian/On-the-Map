@@ -23,6 +23,9 @@ class InformationPostingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.title = "Add Location"
+//        self.na
+        
         navigationItem.title = "Add Location"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CANCEL", style: .plain, target: self, action: #selector(cancel))
         
@@ -40,9 +43,7 @@ class InformationPostingViewController: UIViewController {
     // MARK: - Helper Methods
     
     @objc func cancel() {
-//        self.navigationController?.popToRootViewController(animated: true)
-        self.navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
