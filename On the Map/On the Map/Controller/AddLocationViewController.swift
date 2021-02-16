@@ -69,7 +69,15 @@ class AddLocationViewController: UIViewController {
             }
         } else {
             print("Posting Student Location Failed!")
+            displayError(error: error!)
         }
+    }
+    
+    
+    func displayError(error: Error) {
+        let alertVC = UIAlertController(title: "Submission Failed", message: error.localizedDescription, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
 
 }

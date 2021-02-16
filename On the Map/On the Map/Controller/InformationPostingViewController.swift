@@ -122,7 +122,6 @@ class InformationPostingViewController: UIViewController {
         let alertVC = UIAlertController(title: "Cannot Find Location", message: error, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
-//        show(alertVC, sender: nil)
     }
 
 }
