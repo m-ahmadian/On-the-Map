@@ -11,14 +11,6 @@ import MapKit
 
 class AddLocationViewController: UIViewController {
     
-    // AddLocationViewController Delegate Method
-    func dismissViewController(controller: UIViewController) {
-        controller.dismiss(animated: true) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-    
-    
     // MARK: - Properties
     var location: String!
     var link: String!
@@ -32,11 +24,18 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add Location", style: .done, target: self, action: #selector(cancel))
+        
         setUpMapView(coordinate: coordinate)
     }
     
     
     // MARK: - Actions
+    
+    @objc func cancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func finish(_ sender: Any) {
         OnTheMapClient.postStudentLocation(mapString: location, mediaURL: link, latitude: coordinate.latitude, longitude: coordinate.longitude, completion: handlePostLocation(success:error:))
     }

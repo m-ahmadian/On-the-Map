@@ -49,7 +49,8 @@ class InformationPostingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //
         if segue.identifier == "addLocation" {
-            let addLocationVC = segue.destination as? AddLocationViewController
+            let navigationController = segue.destination as? UINavigationController
+            let addLocationVC = navigationController?.topViewController as? AddLocationViewController
             addLocationVC?.location = self.locationTextField.text ?? ""
             addLocationVC?.coordinate = self.coordinate
             addLocationVC?.link = self.linkTextField.text ?? ""
