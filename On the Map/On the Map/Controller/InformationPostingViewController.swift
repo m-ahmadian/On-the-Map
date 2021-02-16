@@ -36,7 +36,14 @@ class InformationPostingViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func findLocation(_ sender: Any) {
-        getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
+        
+        if linkTextField.text?.count == 0 {
+            displayError(error: "Link could not be empty!")
+        } else {
+            getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
+        }
+        
+//        getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
     }
     
     
@@ -83,6 +90,12 @@ class InformationPostingViewController: UIViewController {
             DispatchQueue.main.async {
                 completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
             }
+            
+//            else {
+//                DispatchQueue.main.async {
+//                    completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+//                }
+//            }
         }
     }
     
@@ -92,7 +105,24 @@ class InformationPostingViewController: UIViewController {
             self.coordinate = coordinate
             performSegue(withIdentifier: "addLocation", sender: self)
 
+        } else {
+            print(error?.localizedDescription ?? "Not found!!!")
+            displayError(error: error?.localizedDescription ?? "")
         }
+    }
+    
+    
+//    func showLoginFailure(message: String) {
+//        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+//        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        show(alertVC, sender: nil)
+//    }
+    
+    func displayError(error: String) {
+        let alertVC = UIAlertController(title: "Cannot Find Location", message: error, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+//        show(alertVC, sender: nil)
     }
 
 }
