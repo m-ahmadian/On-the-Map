@@ -8,11 +8,24 @@
 
 import Foundation
 
+//struct LoginRequest: Codable {
+//    let udacity: [Credentials]
+//}
+//
+//struct Credentials: Codable {
+//    let username: String
+//    let password: String
+//}
+
+
+
 struct LoginRequest: Codable {
-    let udacity: [[String : String]]
+    let udacity: [String: String]
 }
 
-struct Credentials: Codable {
-    let username: String
-    let password: String
-}
+//struct Credentials: Codable {
+//    let username: String
+//    let password: String
+//}
+
+//let sdfhj = LoginRequest(udacity: [String : String])
