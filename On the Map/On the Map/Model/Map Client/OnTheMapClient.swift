@@ -56,6 +56,56 @@ class OnTheMapClient {
     }
     
     
+    
+    
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        
+        let request = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+                
+            } catch {
+                do {
+                    let range = 5..<data.count
+                    let newData = data.subdata(in: range)
+                    let newResponseObject = try decoder.decode(ResponseType.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(newResponseObject, nil)
+                    }
+                } catch {
+                    do {
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            completion(nil, errorResponse)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    
+    
     class func createSessionId(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         var request = URLRequest(url: Endpoins.createSessionId.url)
         request.httpMethod = "POST"
@@ -108,66 +158,46 @@ class OnTheMapClient {
     
     
     
+    
+    
     class func getStudentLocations(completion: @escaping ([Results], Error?) -> Void) {
-        let request = URLRequest(url: Endpoins.getStudentLocations.url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
+        taskForGETRequest(url: Endpoins.getStudentLocations.url, response: LocationsResponse.self) { (response, error) in
+            if let response = response {
                 DispatchQueue.main.async {
-                    completion([], error)
+                    completion(response.results, nil)
                 }
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            do {
-                let responseObject = try decoder.decode(LocationsResponse.self, from: data)
-                DispatchQueue.main.async {
-                    completion(responseObject.results, nil)
-                }
-                
-            } catch {
+            } else {
                 DispatchQueue.main.async {
                     completion([], error)
                 }
             }
         }
-        task.resume()
     }
+    
     
     
     
     class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
-        let request = URLRequest(url: Endpoins.getUserData.url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(false, error)
-                }
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            do {
-                let range = 5..<data.count
-                let newData = data.subdata(in: range)
-                let responseObject = try decoder.decode(UserDataResponse.self, from: newData)
-                Auth.firstName = responseObject.firstName
-                Auth.lastName = responseObject.lastName
-                Auth.uniqueKey = responseObject.key
+        
+        taskForGETRequest(url: Endpoins.getUserData.url, response: UserDataResponse.self) { (response, error) in
+            if let response = response {
+                Auth.firstName = response.firstName
+                Auth.lastName = response.lastName
+                Auth.uniqueKey = response.key
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }
-                
-            } catch {
+            } else {
                 DispatchQueue.main.async {
                     completion(false, error)
                 }
             }
         }
-        task.resume()
     }
+
+    
+    
+    
     
     class func postStudentLocation(mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
         var request = URLRequest(url: Endpoins.postStudentLocation.url)
