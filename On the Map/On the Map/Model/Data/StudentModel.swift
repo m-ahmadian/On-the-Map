@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import MapKit
-import UIKit
 
 class StudentModel {
     static var locations = [Results]()

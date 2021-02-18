@@ -18,11 +18,8 @@ struct ErrorResponse: Codable, Error {
     }
 }
 
-
 extension ErrorResponse: LocalizedError {
     var errorDescription: String? {
         return message
     }
 }
-
-//{"status":403,"error":"Account not found or invalid credentials."}

@@ -13,7 +13,6 @@ struct OnTheMapResponse: Codable {
     let error: String
 }
 
-
 extension OnTheMapResponse: LocalizedError {
     var errorDescription: String? {
         return error

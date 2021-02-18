@@ -14,6 +14,7 @@ class InformationPostingViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // MARK: - Properties
@@ -22,9 +23,6 @@ class InformationPostingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.title = "Add Location"
-//        self.na
         
         navigationItem.title = "Add Location"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "CANCEL", style: .plain, target: self, action: #selector(cancel))
@@ -40,10 +38,9 @@ class InformationPostingViewController: UIViewController {
         if linkTextField.text?.count == 0 {
             displayError(error: "Link could not be empty!")
         } else {
+            refreshUI(true)
             getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
         }
-        
-//        getCoordinate(addressString: locationTextField.text ?? "", completionHandler: handleGetCoordinate(coordinate:error:))
     }
     
     
@@ -71,7 +68,6 @@ class InformationPostingViewController: UIViewController {
     }
     
     
-    
     func getCoordinate(addressString : String,
                        completionHandler: @escaping (CLLocationCoordinate2D, Error?) -> Void ) {
         let geocoder = CLGeocoder()
@@ -90,12 +86,6 @@ class InformationPostingViewController: UIViewController {
             DispatchQueue.main.async {
                 completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
             }
-            
-//            else {
-//                DispatchQueue.main.async {
-//                    completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
-//                }
-//            }
         }
     }
     
@@ -109,19 +99,23 @@ class InformationPostingViewController: UIViewController {
             print(error?.localizedDescription ?? "Not found!!!")
             displayError(error: error?.localizedDescription ?? "")
         }
+        refreshUI(false)
     }
     
-    
-//    func showLoginFailure(message: String) {
-//        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-//        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        show(alertVC, sender: nil)
-//    }
     
     func displayError(error: String) {
         let alertVC = UIAlertController(title: "Cannot Find Location", message: error, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    
+    func refreshUI(_ refreshing: Bool) {
+        if refreshing {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
 
 }

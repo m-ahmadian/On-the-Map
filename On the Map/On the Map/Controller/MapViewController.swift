@@ -49,13 +49,9 @@ class MapViewController: UIViewController {
         } else {
 
             StudentModel.locations = locations
-
-            // Try
             mapView.removeAnnotations(mapView.annotations)
-//          annotations.removeAll()
 
             var annotations = [MKPointAnnotation]()
-
 
             for location in StudentModel.locations {
                 let lat = CLLocationDegrees(String(format: "%f", location.latitude))!
@@ -75,7 +71,6 @@ class MapViewController: UIViewController {
             }
 
             self.mapView.addAnnotations(annotations)
-//          self.mapView.reloadInputViews()
             refreshUI(false)
         }
     }
@@ -92,6 +87,7 @@ class MapViewController: UIViewController {
 }
 
 
+// MARK: - MapViewController Extension
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

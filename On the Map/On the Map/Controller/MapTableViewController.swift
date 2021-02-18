@@ -20,6 +20,7 @@ class MapTableViewController: UITableViewController {
     lazy var locations = [Results]()
     
     
+    // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -28,9 +29,6 @@ class MapTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        OnTheMapClient.getStudentLocations(completion: handleStudentLocationsResponse(locations:error:))
-        
     }
     
     
@@ -68,7 +66,7 @@ class MapTableViewController: UITableViewController {
     
     
 
-    // MARK: - Table view data source
+    // MARK: - TableView Delegate & DataSource Methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

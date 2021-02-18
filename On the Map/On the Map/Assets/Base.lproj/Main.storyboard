@@ -341,9 +341,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="apl-ar-0f9">
+                                <rect key="frame" x="169" y="393" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="apl-ar-0f9" firstAttribute="top" secondItem="dSD-Qa-Ru3" secondAttribute="bottom" constant="8" id="EBm-1y-7tw"/>
+                            <constraint firstItem="apl-ar-0f9" firstAttribute="centerX" secondItem="pPr-hJ-EXR" secondAttribute="centerX" id="Kyv-zj-wf5"/>
                             <constraint firstItem="ofj-s5-Alx" firstAttribute="leading" secondItem="dSD-Qa-Ru3" secondAttribute="leading" id="Osi-UE-cf0"/>
                             <constraint firstItem="ofj-s5-Alx" firstAttribute="leading" secondItem="W9v-ER-P6C" secondAttribute="leading" id="ZJu-iT-Fiy"/>
                             <constraint firstItem="Ovp-cH-LPg" firstAttribute="top" secondItem="pPr-hJ-EXR" secondAttribute="top" constant="38" id="Zov-bb-Ib3"/>
@@ -360,6 +366,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dtl-4i-kpR"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="apl-ar-0f9" id="RaN-gF-Wnk"/>
                         <outlet property="linkTextField" destination="ofj-s5-Alx" id="Xl0-YQ-i30"/>
                         <outlet property="locationTextField" destination="W9v-ER-P6C" id="wnl-eE-qJP"/>
                         <segue destination="16P-uh-HPk" kind="presentation" identifier="addLocation" id="Xuy-u6-2QA"/>

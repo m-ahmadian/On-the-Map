@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct StudentLocationRequest: Codable {
     let uniqueKey: String
     let firstName: String

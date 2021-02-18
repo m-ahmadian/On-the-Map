@@ -13,7 +13,6 @@ struct LoginResponse: Codable {
     let session: Session
 }
 
-
 struct Account: Codable {
     let registered: Bool
     let key: String

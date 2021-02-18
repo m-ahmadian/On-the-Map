@@ -57,7 +57,6 @@ class OnTheMapClient {
     
     
     
-    
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         
         let request = URLRequest(url: url)
@@ -101,7 +100,6 @@ class OnTheMapClient {
         }
         task.resume()
     }
-    
     
     
     
@@ -173,7 +171,6 @@ class OnTheMapClient {
     
     
     
-    
     class func getStudentLocations(completion: @escaping ([Results], Error?) -> Void) {
         taskForGETRequest(url: Endpoins.getStudentLocations.url, response: LocationsResponse.self) { (response, error) in
             if let response = response {
@@ -187,7 +184,6 @@ class OnTheMapClient {
             }
         }
     }
-    
     
     
     
@@ -225,7 +221,6 @@ class OnTheMapClient {
             }
         }
     }
-
     
     
     

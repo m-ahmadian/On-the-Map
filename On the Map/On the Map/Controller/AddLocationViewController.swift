@@ -50,10 +50,9 @@ class AddLocationViewController: UIViewController {
         annotation.title = "\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)"
         annotation.subtitle = link
         
-        //            let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        //  let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
-        //            let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
-        
+        //  let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
         self.mapView.setRegion(region, animated: true)
         self.mapView.addAnnotation(annotation)
         self.mapView.reloadInputViews()

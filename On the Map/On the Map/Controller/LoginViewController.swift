@@ -10,9 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var usernameTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
     
+    
+    
+    // MARK: - View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,8 +24,8 @@ class LoginViewController: UIViewController {
         usernameTextField.text = ""
         passwordTextField.text = ""
     }
-    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,7 +50,6 @@ class LoginViewController: UIViewController {
     
     
     
-    
     // MARK: - Helper Methods
     
     func handleSessionResponse(success: Bool, error: Error?) {
@@ -58,7 +61,6 @@ class LoginViewController: UIViewController {
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
-
 
     
     func showLoginFailure(message: String) {
