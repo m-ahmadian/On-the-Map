@@ -47,7 +47,7 @@ class AddLocationViewController: UIViewController {
     func setUpMapView(coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-        annotation.title = "\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)"
+        annotation.title = "\(Auth.firstName) \(Auth.lastName)"
         annotation.subtitle = link
         
         //  let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)

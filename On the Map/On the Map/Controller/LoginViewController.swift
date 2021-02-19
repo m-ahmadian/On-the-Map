@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     func handleSessionResponse(success: Bool, error: Error?) {
         if success {
             print("successfully logged in")
-            print(OnTheMapClient.Auth.sessionId)
+            print(Auth.sessionId)
             performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")

@@ -11,6 +11,7 @@
 		E803030F25CA6A1A00FE2D23 /* OnTheMapResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803030E25CA6A1A00FE2D23 /* OnTheMapResponse.swift */; };
 		E803031125CA6C7B00FE2D23 /* LocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803031025CA6C7B00FE2D23 /* LocationsResponse.swift */; };
 		E803031325CA6FC100FE2D23 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803031225CA6FC100FE2D23 /* MapViewController.swift */; };
+		E803857F25DF66C0001F0C07 /* APIClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803857E25DF66C0001F0C07 /* APIClientInfo.swift */; };
 		E803AC7025C7BC8300F4EC8D /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803AC6F25C7BC8300F4EC8D /* LoginButton.swift */; };
 		E803AC7225C7BE1A00F4EC8D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803AC7125C7BE1A00F4EC8D /* Colors.swift */; };
 		E803AC7425C7C1A500F4EC8D /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803AC7325C7C1A500F4EC8D /* LoginTextField.swift */; };
@@ -38,6 +39,7 @@
 		E803030E25CA6A1A00FE2D23 /* OnTheMapResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapResponse.swift; sourceTree = "<group>"; };
 		E803031025CA6C7B00FE2D23 /* LocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsResponse.swift; sourceTree = "<group>"; };
 		E803031225CA6FC100FE2D23 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E803857E25DF66C0001F0C07 /* APIClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInfo.swift; sourceTree = "<group>"; };
 		E803AC6F25C7BC8300F4EC8D /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		E803AC7125C7BE1A00F4EC8D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E803AC7325C7C1A500F4EC8D /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		E830AFA325C90F25003B07D6 /* Map Client */ = {
 			isa = PBXGroup;
 			children = (
+				E803857E25DF66C0001F0C07 /* APIClientInfo.swift */,
 				E830AFA425C90F92003B07D6 /* OnTheMapClient.swift */,
 			);
 			path = "Map Client";
@@ -276,6 +279,7 @@
 				E8DE0BAC25DD5DEF003908F9 /* StudentLocationRequest.swift in Sources */,
 				E80CFD2625DA367D004CC1DD /* ErrorResponse.swift in Sources */,
 				E803AC7425C7C1A500F4EC8D /* LoginTextField.swift in Sources */,
+				E803857F25DF66C0001F0C07 /* APIClientInfo.swift in Sources */,
 				E8DE0BAE25DD6E79003908F9 /* PostLocationResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

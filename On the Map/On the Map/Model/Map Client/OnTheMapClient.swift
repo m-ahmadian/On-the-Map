@@ -10,14 +10,6 @@ import Foundation
 
 class OnTheMapClient {
     
-    struct Auth {
-        static var sessionId = ""
-        static var objectId = ""
-        static var uniqueKey = ""
-        static var firstName = ""
-        static var lastName = ""
-    }
-    
     enum Endpoins {
         static let base = "https://onthemap-api.udacity.com/v1/"
         static let session = "session"

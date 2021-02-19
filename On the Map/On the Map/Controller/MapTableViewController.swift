@@ -82,7 +82,7 @@ class MapTableViewController: UITableViewController {
         
         let location = locations[indexPath.row]
         
-        cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
+        cell.textLabel?.text = "\(location.firstName ?? "") \(location.lastName ?? "")"
         cell.detailTextLabel?.text = location.mediaURL
         cell.imageView?.image = UIImage(named: "icon_pin")
 
@@ -94,7 +94,7 @@ class MapTableViewController: UITableViewController {
         let selectedLocation = locations[indexPath.row]
         
         let toOpen = selectedLocation.mediaURL
-        UIApplication.shared.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: toOpen ?? "")!, options: [:], completionHandler: nil)
     }
     
 }

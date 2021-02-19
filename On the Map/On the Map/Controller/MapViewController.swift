@@ -64,7 +64,7 @@ class MapViewController: UIViewController {
 
                 let annotaion = MKPointAnnotation()
                 annotaion.coordinate = coordinate
-                annotaion.title = "\(first) \(last)"
+                annotaion.title = "\(first ?? "") \(last ?? "")"
                 annotaion.subtitle = mediaURL
 
                 annotations.append(annotaion)

@@ -64,7 +64,7 @@ class InformationPostingViewController: UIViewController {
     
     
     func handleUserData(success: Bool, error: Error?) {
-        print("\(OnTheMapClient.Auth.firstName) \(OnTheMapClient.Auth.lastName)")
+        print("\(Auth.firstName) \(Auth.lastName)")
     }
     
     
